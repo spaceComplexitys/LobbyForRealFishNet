@@ -5,6 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/SteamIntegration/Scenes/MenuSceneStream.unity
+    guid: 84577f16238364f949f72c3aa8d8dfe5
+  - enabled: 1
+    path: Assets/Scenes/Bootstrap.unity
+    guid: d1d3182e2038646a6b66c465fec02694
+  - enabled: 1
+    path: Assets/Scenes/SteamGameScene.unity
+    guid: a4e9c5a822fe843c597becaeca0d7064
+  - enabled: 1
+    path: Assets/Scenes/MenuSceneSteam.unity
+    guid: cb067dc1b41e14b0dae5195bf8b2a292
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
