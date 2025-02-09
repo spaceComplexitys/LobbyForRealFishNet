@@ -19,7 +19,12 @@ public class BootstrapManager : MonoBehaviour
 
     public static ulong CurrentLobbyID;
 
-
+    private void Start()
+    {
+        LobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
+        JoinRequest = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequest);
+        LobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+    }
     public void GoToMenu() {
         SceneManager.LoadScene(menuName, LoadSceneMode.Additive);
     }
