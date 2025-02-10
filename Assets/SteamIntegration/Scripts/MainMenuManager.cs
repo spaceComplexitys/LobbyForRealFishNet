@@ -56,11 +56,11 @@ public class MainMenuManager : MonoBehaviour
         CSteamID steamID = new CSteamID(Convert.ToUInt64(lobbyInput.text));
         BootstrapManager.JoinByID(steamID);
     }
- 
+
     public void LeaveLobby()
     {
-        // BootstrapManager.LeaveLobby();
-        // OpenMainMenu();
+        BootstrapManager.LeaveLobby();
+        OpenMainMenu();
     }
  
     // public void StartGame()

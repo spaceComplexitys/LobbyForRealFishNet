@@ -57,7 +57,7 @@ public class BootstrapManager : MonoBehaviour
     {
         CurrentLobbyID = callback.m_ulSteamIDLobby;
         
-        // MainMenuManager.LobbyEntered(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name"), _networkManager.IsServer);
+        MainMenuManager.LobbyEntered(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name"), _networkManager.IsServer);
         
         _fishySteamworks.SetClientAddress(SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "HostAddress"));
         _fishySteamworks.StartConnection(false);
@@ -72,6 +72,14 @@ public class BootstrapManager : MonoBehaviour
             Debug.Log("Failed to join lobby with ID: " + steamID.m_SteamID);
     }
 
-
+    public static void LeaveLobby()
+    {
+        SteamMatchmaking.LeaveLobby(new CSteamID(CurrentLobbyID));
+        CurrentLobbyID = 0;
+ 
+        instance._fishySteamworks.StopConnection(false);
+        if(instance._networkManager.IsServer)
+            instance._fishySteamworks.StopConnection(true);
+    }
 
 }
