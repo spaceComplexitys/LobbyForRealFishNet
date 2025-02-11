@@ -56,16 +56,16 @@ public class MainMenuManager : MonoBehaviour
         CSteamID steamID = new CSteamID(Convert.ToUInt64(lobbyInput.text));
         BootstrapManager.JoinByID(steamID);
     }
-
+ 
     public void LeaveLobby()
     {
         BootstrapManager.LeaveLobby();
         OpenMainMenu();
     }
  
-    // public void StartGame()
-    // {
-    //     string[] scenesToClose = new string[] { "MenuSceneSteam" };
-    //     BootstrapNetworkManager.ChangeNetworkScene("SteamGameScene", scenesToClose);
-    // }
+    public void StartGame()
+    {
+        string[] scenesToClose = new string[] { "MenuSceneSteam" };
+       // BootstrapNetworkManager.ChangeNetworkScene("SteamGameScene", scenesToClose);
+    }
 }

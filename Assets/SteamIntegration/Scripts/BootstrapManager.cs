@@ -39,15 +39,19 @@ public class BootstrapManager : MonoBehaviour
 
         if (callback.m_eResult != EResult.k_EResultOK)
             return;
- 
+
         CurrentLobbyID = callback.m_ulSteamIDLobby;
+
+        // Print the lobby ID:
+        Debug.Log("Lobby ID: " + CurrentLobbyID);
+
         SteamMatchmaking.SetLobbyData(new CSteamID(CurrentLobbyID), "HostAddress", SteamUser.GetSteamID().ToString());
         SteamMatchmaking.SetLobbyData(new CSteamID(CurrentLobbyID), "name", SteamFriends.GetPersonaName().ToString() + "'s lobby");
         _fishySteamworks.SetClientAddress(SteamUser.GetSteamID().ToString());
         _fishySteamworks.StartConnection(true);
+
         Debug.Log("Lobby creation was successful");
     }
-
     private void OnJoinRequest(GameLobbyJoinRequested_t callback)
     {
         SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
@@ -66,10 +70,14 @@ public class BootstrapManager : MonoBehaviour
     public static void JoinByID(CSteamID steamID)
     {
         Debug.Log("Attempting to join lobby with ID: " + steamID.m_SteamID);
-        if (SteamMatchmaking.RequestLobbyData(steamID))
+        if (SteamMatchmaking.RequestLobbyData(steamID)) {
+            Debug.Log("Joining looks good:" + steamID.m_SteamID);
             SteamMatchmaking.JoinLobby(steamID);
-        else
+        
+        } else {
             Debug.Log("Failed to join lobby with ID: " + steamID.m_SteamID);
+        }
+            
     }
 
     public static void LeaveLobby()
